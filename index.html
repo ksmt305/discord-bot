@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord ボット</title>
+    <script src="https://cdn.jsdelivr.net/npm/discord.js"></script>
+</head>
+<body>
+    <h1>Discord ボット</h1>
+    <button id="sendMessage">メッセージを送信</button>
+    <script>
+        const token = 'YOUR_BOT_TOKEN'; // 自分のボットトークンに置き換えてください
+
+        // メッセージを送信する基本機能
+        document.getElementById('sendMessage').addEventListener('click', () => {
+            // チャンネルにメッセージを送信
+            const channelID = 'YOUR_CHANNEL_ID'; // 自分のチャンネルIDに置き換えてください
+            const message = 'ボットからのこんにちは！';
+            const bot = new Discord.Client();
+
+            bot.login(token).then(() => {
+                const channel = bot.channels.cache.get(channelID);
+                if (channel) {
+                    channel.send(message);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
